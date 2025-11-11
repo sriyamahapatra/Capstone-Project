@@ -1,0 +1,245 @@
+/* Main Container */
+.container {
+  max-width: 1200px;
+}
+
+.search-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.query-text {
+  color: #ff4500;
+}
+
+/* Loading & No Results */
+.loading-container,
+.no-results-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  text-align: center;
+  background-color: #1a1a1b;
+  border-radius: 8px;
+  border: 1px solid #343536;
+}
+
+.loading-text {
+  margin-top: 1rem;
+  color: #d7dadc;
+}
+
+.no-results-container h3 {
+  color: #d7dadc;
+  margin-bottom: 1rem;
+}
+
+.no-results-container p {
+  color: #818384;
+}
+
+/* Post Card Layout */
+.post-card {
+  background-color: #1a1a1b;
+  border: 1px solid #343536;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.post-card:hover {
+  border-color: #818384;
+}
+
+/* Post Header */
+.post-header {
+  font-size: 0.75rem;
+  color: #818384;
+  margin-bottom: 0.75rem;
+}
+
+.subreddit-name {
+  font-weight: 700;
+  color: #d7dadc;
+  margin-right: 0.5rem;
+}
+
+/* Post Content */
+.post-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.post-title {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #d7dadc;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+}
+
+.post-body {
+  max-height: 250px;
+  overflow: hidden;
+  mask-image: linear-gradient(180deg, #000 60%, transparent);
+  -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent);
+}
+
+.post-body ::ng-deep * {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #d7dadc;
+}
+
+/* Action Bar - Horizontal Alignment */
+.post-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #343536;
+}
+
+/* Vote Section */
+.vote-section {
+  display: flex;
+  align-items: center;
+}
+
+/* Comment Section */
+.comment-section {
+  display: flex;
+  align-items: center;
+}
+
+.comment-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: #818384;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.5rem 0.75rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.comment-btn:hover {
+  background-color: #272729;
+  color: #d7dadc;
+}
+
+.comment-count {
+  font-weight: 700;
+}
+
+.comment-text {
+  font-weight: 400;
+}
+
+/* ✅ Edit & Delete Section */
+.edit-delete-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* space between buttons */
+}
+
+/* ✅ Blue Edit Button */
+.btn-primary {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  border: none;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #0056b3 0%, #007bff 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.4);
+}
+
+/* Red Delete Button */
+.btn-danger {
+  background-color: #b71c1c;
+  border: none;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #d32f2f;
+  transform: translateY(-1px);
+  box-shadow: 0 0 10px rgba(255, 68, 68, 0.3);
+}
+
+/* Read Post Section */
+.read-post-section {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Push to the right */
+}
+
+.read-post-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, green 0%, rgb(21, 56, 21) 100%);
+  border: none;
+  color: #fcfeff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.read-post-btn:hover {
+  background-color: #272729;
+  color: #d7dadc;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .post-actions {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .edit-delete-section {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .read-post-section {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .read-post-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

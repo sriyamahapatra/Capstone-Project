@@ -1,0 +1,73 @@
+<div class="login-section">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-1"></div>
+
+    <!-- Quote Section -->
+    <div class="col-md-5">
+      <div class="quote-section">
+        <h2 class="quote-text">The front page of the internet</h2>
+        <p class="quote-subtext">Join the conversation.</p>
+      </div>
+    </div>
+
+    <!-- Login Form Section -->
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-header">
+          <h4>Login</h4>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <!-- Username Field -->
+            <div class="form-group">
+              <label for="user_name" class="form-label">Username</label>
+              <input type="text" id="user_name" class="form-control"
+                     [formControlName]="'username'" name="user_name"
+                     required autofocus placeholder="Enter your username">
+              <div class="validation-message"
+                   *ngIf="!loginForm.get('username').valid && loginForm.get('username').touched">
+                Please provide a valid username
+              </div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" id="password" class="form-control"
+                     [formControlName]="'password'" name="password"
+                     required placeholder="Enter your password">
+              <div class="validation-message"
+                   *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
+                Password cannot be empty
+              </div>
+            </div>
+
+            <!-- Login Button & Sign Up Link -->
+            <div class="form-actions">
+              <button type="submit" class="login-btn">
+                Login
+              </button>
+              <div class="signup-link">
+                New User? <a routerLink="/signup">Sign Up</a>
+              </div>
+              <div class="forgot-password-link">
+                <a routerLink="/forgot-password">Forgot Password?</a>
+              </div>
+            </div>
+
+            <!-- Messages -->
+            <div class="message-container">
+              <div class="error-message" *ngIf='this.isError'>
+                <p>Login Failed. Please check your credentials and try again.</p>
+              </div>
+              <div class="success-message" *ngIf="this.registerSuccessMessage.length > 0">
+                <p>{{registerSuccessMessage}}</p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>

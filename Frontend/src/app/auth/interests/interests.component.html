@@ -1,0 +1,25 @@
+<div class="interests-section">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h4>What are you interested in?</h4>
+        </div>
+        <div class="card-body">
+          <p>Select at least 3 interests to continue.</p>
+          <div class="interests-grid">
+            <div *ngFor="let interest of interests" class="interest-item"
+                 [class.selected]="selectedInterests.has(interest)" (click)="toggleInterest(interest)">
+              {{ interest }}
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-primary" (click)="submitInterests()" [disabled]="selectedInterests.size < 3">
+              Continue
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

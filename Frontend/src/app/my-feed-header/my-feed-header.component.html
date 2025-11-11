@@ -1,0 +1,44 @@
+<header>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/">
+        <img src="/Frontend/src/assets/logo.png" alt="Forest Logo" class="logo-img">
+        <span class="logo-text">Forest</span>
+      </a>
+
+      <div class="search-bar-container">
+        <form (ngSubmit)="search()">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search Forest" [(ngModel)]="searchQuery" name="searchQuery">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="auth-buttons">
+        <div *ngIf="isLoggedIn" class="d-flex align-items-center">
+          <!-- <a routerLink="/my-feed" class="nav-link">My Feed</a> -->
+          <div class="dropdown" (mouseenter)="showDropdown = true" (mouseleave)="showDropdown = false">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button">
+              <img class="account-icon" src="/assets/images/user-icon.png">
+              {{ username }}
+            </a>
+            <div class="dropdown-menu" [class.show]="showDropdown">
+              <a class="dropdown-item" routerLink="/user-profile/{{username}}">Profile</a>
+              <a class="dropdown-item" (click)="logout()">Logout</a>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="!isLoggedIn">
+          <a routerLink="/signup" class="btn btn-outline-primary mr-2">Sign Up</a>
+          <a routerLink="/login" class="btn btn-primary">Login</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

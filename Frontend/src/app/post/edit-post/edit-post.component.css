@@ -1,0 +1,167 @@
+/* Simple Dark Theme with Green Accents */
+:host {
+  --dark-bg: #0d1117;
+  --card-bg: #161b22;
+  --card-border: #30363d;
+  --primary-green: #238636;
+  --green-gradient: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+  --text-primary: #e6edf3;
+  --text-secondary: #7d8590;
+  --input-bg: #0d1117;
+  --input-border: #30363d;
+  --input-focus: #238636;
+}
+
+.container {
+  background: #0d111700;
+  min-height: 100vh;
+  padding: 2rem 0;
+}
+
+.create-post-container {
+  background: #151515;
+  border:1px solid #074c09;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-top: 1rem;
+}
+
+.create-post-heading {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.create-post-heading i {
+  color: var(--primary-green);
+}
+
+.form-section {
+  margin-bottom: 1.5rem;
+}
+
+.form-control {
+  background: var(--input-bg) !important;
+  border: 1px solid var(--primary-green) !important;
+  border-radius: 6px !important;
+  color: var(--text-primary) !important;
+  padding: 0.5rem !important;
+  font-size: 0.95rem !important;
+  transition: all 0.2s ease !important;
+}
+
+.form-control:focus {
+  border-color: var(--primary-green) !important;
+  box-shadow: 0 0 0 2px rgba(35, 134, 54, 0.2) !important;
+  outline: none;
+}
+
+.form-control::placeholder {
+  color: var(--text-secondary) !important;
+}
+
+/* Select dropdown */
+select.form-control {
+  margin-bottom: 4px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23238636' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 14px;
+  padding-right: 2.5rem !important;
+}
+
+/* TinyMCE Editor */
+:host ::ng-deep .tox-tinymce {
+  border: 1px solid var(--input-border) !important;
+  border-radius: 6px !important;
+  background: var(--input-bg) !important;
+}
+
+:host ::ng-deep .tox-editor-container {
+  background: var(--input-bg) !important;
+}
+
+:host ::ng-deep .tox-toolbar,
+:host ::ng-deep .tox-menubar {
+  background: var(--card-bg) !important;
+  border-bottom: 1px solid var(--input-border) !important;
+}
+
+:host ::ng-deep .tox-tbtn {
+  color: var(--text-secondary) !important;
+}
+
+:host ::ng-deep .tox-tbtn:hover {
+  background: rgba(35, 134, 54, 0.1) !important;
+  color: var(--primary-green) !important;
+}
+
+:host ::ng-deep .tox-edit-area {
+  background: var(--input-bg) !important;
+  border-top: 1px solid var(--input-border) !important;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--input-border);
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: 1px solid;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-discard {
+  background: transparent;
+  color: var(--text-secondary);
+  border-color: var(--input-border);
+}
+
+.btn-discard:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
+
+.btn-post {
+  background: var(--green-gradient);
+  color: white;
+  border-color: transparent;
+}
+
+.btn-post:hover {
+  background: var(--primary-green);
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .create-post-container {
+    padding: 1.5rem;
+    margin: 0 1rem;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

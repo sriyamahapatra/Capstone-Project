@@ -1,0 +1,33 @@
+<div class="row post" *ngFor="let post of posts">
+  <div class="col-md-12 post-content-container">
+    <span class="subreddit-info">
+      <span class="subreddit-text"><a class="posturl" routerLink="">{{post.subredditName}}</a></span>
+      <span> . Posted by <a class="username" routerLink="/user/{{post.userName}}">{{post.userName}}</a></span>
+      <span> . {{post.duration}}</span>
+    </span>
+    <hr />
+    <div class="post-title">
+      <a class="postname"  routerLink="/view-post/{{post.id}}">{{post.postName}}</a>
+    </div>
+    <div>
+      <p class="post-text" [innerHtml]="post.description"></p>
+    </div>
+    <hr />
+    <div class="post-actions">
+      <!-- Vote Section Moved Here -->
+      <div class="vote-section-horizontal">
+        <app-vote-button [post]="post"></app-vote-button>
+      </div>
+
+      <a class="btnCommments" role="button">
+        <fa-icon [icon]="faComments"></fa-icon>
+        ({{post.commentCount}})
+      </a>
+      <button class="login" (click)="goToPost(post.id)">
+        Read Post
+      </button>
+      <button class="btn btn-primary" *ngIf="isAuthor(post) || isAdmin()" (click)="editPost(post.id)">Edit</button>
+      <button class="btn btn-danger" *ngIf="isAuthor(post) || isAdmin()" (click)="deletePost(post.id)">Delete</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,122 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-9">
+      <h2>{{ selectedSubreddit?.name }}</h2>
+      <p>{{ selectedSubreddit?.description }}</p>
+      <div class="container mt-4">
+        <div class="row">
+          <div class="col-md-12">
+            <div
+              *ngFor="let post of posts"
+              class="post-container mb-4 p-3 border rounded"
+            >
+              <!-- Post Header Section -->
+              <div class="post-header mb-3">
+                <span class="subreddit-info">
+                  <span class="subreddit-text"
+                  ><a class="posturl" routerLink="view-subreddit/{{ selectedSubreddit?.id }}">{{
+                      selectedSubreddit?.name
+                    }}</a></span
+
+                  >
+                  <!--                  <span class="subreddit-info">-->
+                  <!--                  <span class="subreddit-text"-->
+                  <!--                  ><a class="posturl" routerLink="">{{-->
+                  <!--                      selectedSubreddit?.description-->
+                  <!--                    }}</a></span>-->
+                  <!--                  <span>-->
+                  <span>
+                    . Posted by
+                    <a
+                      class="username"
+                      routerLink="/user/{{ post.userName }}"
+                    >
+                      {{
+                        post.userName === currentUser ? "you" : post.userName
+                      }}
+                    </a>
+                  </span>
+                  <span> . {{ post.duration }}</span>
+
+                  <!--                  <button-->
+                  <!--                    *ngIf="currentUser === post.userName"-->
+                  <!--                    class="toggleNotifications btn btn-outline-warning btn-sm float-right"-->
+                  <!--                    (click)="-->
+                  <!--                      toggleNotifications(post.id, !post.notificationStatus)-->
+                  <!--                    "-->
+                  <!--                  >-->
+                  <!--                    <fa-icon-->
+                  <!--                      [icon]="post.notificationStatus ? faBell : faBellSlash"-->
+                  <!--                    ></fa-icon>-->
+                  <!--                    {{-->
+                  <!--                      post.notificationStatus-->
+                  <!--                        ? "Notifications on"-->
+                  <!--                        : "Notifications off"-->
+                  <!--                    }}-->
+                  <!--                  </button>-->
+                </span>
+              </div>
+
+              <hr />
+
+              <!-- Post Content Section -->
+              <div class="post-content">
+                <div class="post-title">
+                  <a
+                    class="postname"
+                    routerLink="{{ '/view-post/' + post.id }}"
+                  >
+                    {{ post.postName }}
+                  </a>
+                </div>
+                <div>
+                  <p class="post-text" [innerHtml]="post.description"></p>
+                </div>
+              </div>
+
+              <hr />
+
+              <!-- Post Footer Section with Vote Button -->
+              <div class="post-footer d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                  <app-vote-button [post]="post"></app-vote-button>
+                  <span>
+                    <a class="btnCommments" role="button">
+                      <fa-icon [icon]="faComments"></fa-icon>
+                     ({{ post.commentCount }})
+                    </a>
+                  </span>
+                </div>
+
+                <!-- Edit & Delete (Visible to Author or Admin Only) -->
+                <div class="edit-delete-section me-3" *ngIf="isAuthor(post) || isAdmin()">
+                  <button
+                    class="btn btn-sm btn-primary"
+                    (click)="editPost(post.id)"
+                    title="Edit Post"
+                  >
+                    <i class="fas fa-edit me-1"></i>Edit
+                  </button>
+                  <button
+                    class="btn btn-sm btn-danger"
+                    (click)="deletePost(post.id)"
+                    title="Delete Post"
+                  >
+                    <i class="fas fa-trash me-1"></i>Delete
+                  </button>
+                </div>
+
+                <button class="read-post" (click)="goToPost(post.id)">
+                  Read Post
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-md-3">
+      <app-side-bar></app-side-bar>
+    </div> -->
+  </div>
+</div>

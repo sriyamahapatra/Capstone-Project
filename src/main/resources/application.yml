@@ -1,0 +1,101 @@
+# ============================================================
+# 🌳 FOREST APPLICATION CONFIGURATION
+# ============================================================
+# Centralized Spring Boot configuration for the Forest project.
+# ⚠️ Sensitive credentials are stored in `.env` (never commit secrets).
+# The `.env` file is automatically imported below.
+# ============================================================
+
+spring:
+  application:
+    name: Forest
+
+  # ✅ Load environment variables from .env file automatically
+  config:
+    import: optional:file:.env[.properties]
+
+  # ===========================
+  # 💾 DATABASE CONFIGURATION
+  # ===========================
+  data:
+    mongodb:
+      uri: ${MONGO_URI:mongodb://localhost:27017/forest}
+      auto-index-creation: true
+
+  # ===========================
+  # 📧 MAIL CONFIGURATION
+  # ===========================
+  mail:
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:no-reply@forest.com}
+    password: ${MAIL_PASSWORD:changeme}
+    protocol: ${MAIL_PROTOCOL:smtp}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    default-encoding: UTF-8
+
+# ===========================
+# 🔐 JWT / KEYSTORE CONFIGURATION
+# ===========================
+jwt:
+  keystore:
+    path: ${JWT_KEYSTORE_PATH:keystore.jks}
+    password: ${JWT_KEYSTORE_PASSWORD:changeit}
+    alias: ${JWT_KEYSTORE_ALIAS:jwtkey}
+    keypass: ${JWT_KEY_PASSWORD:changeit}
+
+  expiration:
+    time: ${JWT_EXPIRATION_TIME:86400000}  # Default: 24 hours
+
+  public:
+    key-path: ${JWT_PUBLIC_KEY_PATH:classpath:keys/public.key}
+
+  private:
+    key-path: ${JWT_PRIVATE_KEY_PATH:classpath:keys/jwt.private.key}
+
+# ===========================
+# ☁️ GOOGLE CLOUD & GEMINI CONFIGURATION
+# ===========================
+google:
+  cloud:
+    project-id: ${GOOGLE_CLOUD_PROJECT_ID:gen-lang-client-0674157446}
+
+gemini:
+  api-key: ${GEMINI_API_KEY}
+
+# ===========================
+# 🤖 RAG (Python Microservice) CONFIGURATION
+# ===========================
+rag:
+  service:
+    url: ${RAG_SERVICE_URL:http://localhost:8000}
+
+# ===========================
+# 👑 DEFAULT ADMIN CONFIGURATION
+# ===========================
+admin:
+  username: ${DEFAULT_ADMIN_USERNAME:admin}
+  email: ${DEFAULT_ADMIN_EMAIL:admin@forest.com}
+  password: ${DEFAULT_ADMIN_PASSWORD:admin}
+
+# ===========================
+# 🖥️ SERVER CONFIGURATION
+# ===========================
+server:
+  port: ${SERVER_PORT:8080}
+  address: ${SERVER_ADDRESS:0.0.0.0}
+  tomcat:
+    max-swallow-size: 200MB
+
+# ===========================
+# 🔊 LOGGING CONFIGURATION
+# ===========================
+logging:
+  level:
+    root: INFO
+    com.example.forest: ${LOGGING_LEVEL_COM_EXAMPLE_FOREST_SERVICE:INFO}

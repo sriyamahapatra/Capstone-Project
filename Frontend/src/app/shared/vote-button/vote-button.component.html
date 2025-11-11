@@ -1,0 +1,29 @@
+<div class="vote-section-horizontal">
+  <button class="vote-btn upvote-btn"
+          (click)="upvotePost()"
+          [class.active]="post.upVote"
+          [attr.aria-label]="'Upvote ' + post.postName">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <path d="M12 4L3 15H9V20H15V15H21L12 4Z"
+            [attr.fill]="post.upVote ? '#22db12' : 'transparent'"
+            stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+  </button>
+
+  <div class="vote-count-horizontal"
+       [class.positive]="post.voteCount > 0"
+       [class.negative]="post.voteCount < 0">
+    {{post.voteCount}}
+  </div>
+
+  <button class="vote-btn downvote-btn"
+          (click)="downvotePost()"
+          [class.active]="post.downVote"
+          [attr.aria-label]="'Downvote ' + post.postName">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <path d="M12 20L21 9H15V4H9V9H3L12 20Z"
+            [attr.fill]="post.downVote ? '#ff4500' : 'transparent'"
+            stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+  </button>
+</div>

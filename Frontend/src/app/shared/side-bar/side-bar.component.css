@@ -1,0 +1,43 @@
+.sidebar{
+  width: 312px;
+  height: 242px;
+  --post-line-color: #ccc;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  overflow: hidden;
+  background-color: #ffffff;
+  color: #000000;
+  position: relative;
+  border-radius: 10px;
+  padding:5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.btnCreateSubreddit{
+  background-color: #5e79aa;
+  color: aliceblue;
+  fill: #3c6c9b;
+  border: 1px solid;
+  border-radius: 4px;
+  text-align: center;
+  letter-spacing: 1px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  line-height: 24px;
+  text-transform: uppercase;
+  padding: 3px 16px;
+  opacity: 1;
+  width: 288px;
+  height: 34px;
+}
+
+
+
+.sidebar>ul>li{
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #1c1c1c;
+}

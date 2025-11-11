@@ -1,0 +1,95 @@
+# ============================================================
+# 🌳 Forest Project — Git Attributes
+# ============================================================
+
+# ---------- Line endings (portable) ----------
+* text=auto
+*.sh        text eol=lf
+*.bash      text eol=lf
+*.cmd       text eol=crlf
+*.bat       text eol=crlf
+*.gradle    text eol=lf
+*.md        text eol=lf
+*.yml       text eol=lf
+*.yaml      text eol=lf
+*.json      text eol=lf
+*.properties text eol=lf
+*.java      text eol=lf
+*.xml       text eol=lf
+*.html      text eol=lf
+*.css       text eol=lf
+*.js        text eol=lf
+*.ts        text eol=lf
+
+# ---------- Binary files (no diffs) ----------
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.webp binary
+*.ico  binary
+*.svg  text
+*.pdf  binary
+*.woff binary
+*.woff2 binary
+*.ttf  binary
+*.eot  binary
+*.zip  binary
+*.jar  binary
+*.war  binary
+*.class binary
+*.keystore binary
+*.jks  binary
+*.p12  binary
+*.crt  binary
+*.key  binary
+*.pem  text
+*.mp4  binary
+*.mov  binary
+*.avi  binary
+*.mkv  binary
+
+# ---------- Lock files / merge strategy ----------
+# Keep lockfiles as text but avoid conflict noise if parallel changes occur
+package-lock.json merge=ours
+yarn.lock        merge=ours
+pnpm-lock.yaml   merge=ours
+pom.xml          merge=union
+# If using Gradle:
+gradle.lockfile  merge=ours
+
+# ---------- Improve diffs for common text formats ----------
+*.md     diff=markdown
+*.adoc   diff=asciidoc
+*.sql    diff=sql
+*.xml    diff=xml
+*.yml    diff=yaml
+*.yaml   diff=yaml
+*.properties diff=java
+*.java   diff=java
+
+# ---------- Linguist hints (GitHub language stats) ----------
+# Mark generated/minified assets so they don't skew stats
+*.min.js linguist-generated
+*.min.css linguist-generated
+dist/**  linguist-generated
+build/** linguist-generated
+target/** linguist-generated
+
+# ---------- Release hygiene: exclude secrets & build junk from archives ----------
+# (affects `git archive` / GitHub auto-generated source archives)
+.env              export-ignore
+*.env.*           export-ignore
+keys/**           export-ignore
+*.jks             export-ignore
+*.keystore        export-ignore
+*.p12             export-ignore
+target/**         export-ignore
+build/**          export-ignore
+dist/**           export-ignore
+node_modules/**   export-ignore
+.gradle/**        export-ignore
+.idea/**          export-ignore
+.vscode/**        export-ignore
+.DS_Store         export-ignore
+Thumbs.db         export-ignore

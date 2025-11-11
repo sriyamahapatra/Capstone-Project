@@ -1,0 +1,18 @@
+<div class="sidebar-view-subreddit">
+  <!--  <div style="color: #3d8730; font-weight: bold; text-align: center;" routerLink="/list-subreddits">Browse Topics</div>-->
+  <button class="browse-topics-btn" routerLink="/list-subreddits">
+    Browse Topics
+  </button>
+
+  <hr  />
+  <span *ngFor="let subreddit of subreddits">
+    <div style="display: flex; justify-content: space-between;">
+        <span class="subreddit-text" ><a href="/view-subreddit/{{subreddit.id}}" style="color: #ffffffcb;">{{subreddit.name}}</a></span>
+        <button class="btn btn-danger btn-sm ml-2" *ngIf="isAuthor(subreddit) || isAdmin()" (click)="deleteSubreddit(subreddit.id)">Delete</button>
+    </div>
+        <hr style="border: 0.5px solid rgb(15, 87, 32);" />
+    </span>
+  <!--  <div style="text-align: center" *ngIf="displayViewAll">-->
+  <!--    <a style="font-weight: bold" routerLink="/list-subreddits">View All</a>-->
+  <!--  </div>-->
+</div>

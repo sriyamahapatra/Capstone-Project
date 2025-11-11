@@ -1,0 +1,7 @@
+pymongo
+google-cloud-aiplatform
+beautifulsoup4
+fastapi
+uvicorn
+pydantic
+dotenv

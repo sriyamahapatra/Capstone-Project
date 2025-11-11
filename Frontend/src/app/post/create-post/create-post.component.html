@@ -1,0 +1,102 @@
+<div class="container">
+  <div class="row justify-content-center">
+
+    <!-- Create Post Form -->
+    <div class="col-lg-8">
+      <div class="create-post-container">
+        <form class="post-form" [formGroup]="createPostForm" (ngSubmit)="createPost()">
+          <div class="form-group">
+
+            <!-- Heading -->
+            <div class="create-post-heading">
+              <i class="fas fa-pencil-alt me-2"></i>Create Post
+            </div>
+            <hr class="divider" />
+
+            <!-- Title -->
+            <div class="mb-3">
+              <label for="postTitle" class="form-label">Title</label>
+              <input type="text" id="postTitle" [formControlName]="'postName'" class="form-control"
+                     placeholder="Enter a descriptive post title">
+              <div class="form-text">Make your title clear and concise</div>
+            </div>
+
+            <!-- URL -->
+            <!--            <div class="mb-3">-->
+            <!--              <label for="postUrl" class="form-label">URL (optional)</label>-->
+            <!--              <input type="text" id="postUrl" class="form-control" [formControlName]="'url'"-->
+            <!--                     placeholder="Add an external link if relevant">-->
+            <!--            </div>-->
+
+            <!-- Subreddit / Topic Selection -->
+            <div class="mb-3">
+              <label for="subreddit" class="form-label">Select Topic</label>
+              <select id="subreddit" class="form-control" [formControlName]="'subredditName'">
+                <option  value="" disabled selected>Select a topic</option>
+                <option *ngFor="let subreddit of subreddits" [ngValue]="subreddit.name">
+                  {{ subreddit.name }}
+                </option>
+              </select>
+              <div class="form-text">Choose a topic your post belongs to</div>
+            </div>
+
+            <!-- Description / Editor -->
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <editor id="description"
+                      apiKey="GET_YOUR_API_KEY_FROM_www.tiny.cloud"
+                      [formControlName]="'description'"
+                      [init]="editorConfig">
+              </editor>
+              <div class="form-text">Write your thoughts or share something interesting</div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+              <button type="button" (click)="discardPost()" class="btn btn-discard">
+                <i class="fas fa-times me-2"></i>Discard
+              </button>
+              <button type="submit" class="btn btn-post" [disabled]="!createPostForm.valid">
+                <i class="fas fa-paper-plane me-2"></i>Post
+              </button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="col-lg-4">
+      <div class="sidebar">
+        <h5 class="guidelines">
+          <i class="fas fa-info-circle me-2"></i>Posting to Forest
+        </h5>
+        <hr class="divider" />
+        <ul class="guidelines-list">
+          <li class="guideline-item">
+            <i class="fas fa-user-check guideline-icon"></i>
+            <span>Remember the human</span>
+          </li>
+          <li class="guideline-item">
+            <i class="fas fa-home guideline-icon"></i>
+            <span>Behave like you would in real life</span>
+          </li>
+          <li class="guideline-item">
+            <i class="fas fa-ban guideline-icon"></i>
+            <span>Don't spam</span>
+          </li>
+          <li class="guideline-item">
+            <i class="fas fa-heart guideline-icon"></i>
+            <span>Respect other members</span>
+          </li>
+          <li class="guideline-item">
+            <i class="fas fa-shield-alt guideline-icon"></i>
+            <span>Follow community guidelines</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>

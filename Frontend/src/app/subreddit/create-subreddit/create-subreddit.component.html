@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="create-subreddit-container">
+        <form class="post-form" [formGroup]="createSubredditForm" (ngSubmit)="createSubreddit()">
+          <div class="form-group">
+            <div class="create-subreddit-heading">
+              <i class="fas fa-folder-plus me-2"></i>Create Topic
+            </div>
+            <hr class="divider" />
+            <div class="mb-3">
+              <label for="title" class="form-label">Topic Name</label>
+              <input type="text" [formControlName]="'title'" class="form-control" id="title"
+                     placeholder="Enter a descriptive name for your topic">
+              <div class="form-text">Choose a clear and concise name for your topic</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea [formControlName]="'description'" class="form-control" id="description"
+                        rows="4" placeholder="Describe what this topic is about"></textarea>
+              <div class="form-text">Provide a detailed description to help others understand the purpose of this topic</div>
+            </div>
+
+            <div class="action-buttons">
+              <button type="button" (click)="discard()" class="btn btn-discard">
+                <i class="fas fa-times me-2"></i>Discard
+              </button>
+              <button type="submit" class="btn btn-create" [disabled]="!createSubredditForm.valid">
+                <i class="fas fa-plus-circle me-2"></i>Create Topic
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="sidebar">
+        <h5 class="guidelines">
+          <i class="fas fa-info-circle me-2"></i>Posting to Forest
+        </h5>
+        <hr class="divider" />
+        <ul class="guidelines-list">
+          <li class="guideline-item">
+            <i class="fas fa-user-check guideline-icon"></i>
+            <span>Remember the human</span>
+          </li>
+          <li class="guideline-item">
+            <i class="fas fa-home guideline-icon"></i>
+            <span>Behave like you would in real life</span>
+          </li>
+          <li class="guideline-item">
+            <i class="fas fa-ban guideline-icon"></i>
+            <span>Don't spam</span>
+          </li>
+          <li class="guideline-item">
+            <i class="fas fa-heart guideline-icon"></i>
+            <span>Respect other members</span>
+          </li>
+          <li class="guideline-item">
+            <i class="fas fa-shield-alt guideline-icon"></i>
+            <span>Follow community guidelines</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

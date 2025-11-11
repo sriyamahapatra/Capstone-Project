@@ -1,0 +1,140 @@
+/* Horizontal Vote Section */
+.vote-section-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: linear-gradient( rgb(2, 58, 2), green);
+  border-radius: 20px;
+  padding: 4px 8px;
+  border: 1px solid #234821;
+  gap: 6px;
+  width: fit-content;
+  margin-right: 12px;
+}
+
+.vote-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+  color: #e9ebec;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.vote-btn:hover {
+  background-color: #919191;
+  transform: scale(1.1);
+}
+
+.vote-btn:active {
+  transform: scale(0.95);
+}
+
+.upvote-btn:hover {
+  color: #22db12;
+  background-color:transparent;
+}
+
+.downvote-btn:hover {
+  color: #ff4500;
+  background-color: transparent;
+}
+
+.upvote-btn.active {
+  color: #22db12;
+  background-color: transparent;
+}
+
+.downvote-btn.active {
+  color: #ff4500;
+  background-color: transparent;
+}
+
+.vote-count-horizontal {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 16px;
+  color: #1a1a1b;
+  min-width: 20px;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  padding: 0 4px;
+}
+
+.vote-count-horizontal.positive {
+  color: #22db12;
+}
+
+.vote-count-horizontal.negative {
+  color: #f92121;
+}
+
+/* Compact version for smaller spaces */
+.vote-section-horizontal.compact {
+  padding: 2px 6px;
+  gap: 4px;
+}
+
+.vote-section-horizontal.compact .vote-btn {
+  width: 24px;
+  height: 24px;
+}
+
+.vote-section-horizontal.compact .vote-count-horizontal {
+  font-size: 12px;
+  min-width: 16px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .vote-section-horizontal {
+    padding: 3px 6px;
+    margin-right: 8px;
+    gap: 4px;
+  }
+
+  .vote-btn {
+    width: 26px;
+    height: 26px;
+  }
+
+  .vote-count-horizontal {
+    font-size: 12px;
+  }
+}
+
+/* Focus styles for accessibility */
+.vote-btn:focus {
+  outline: 1px solid #fdfdfd;
+  outline-offset: 1px;
+}
+
+/* Disabled state */
+.vote-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.vote-btn:disabled:hover {
+  background-color: transparent;
+  color: #878a8c;
+}
+
+/* Animation for vote changes */
+@keyframes votePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.vote-count-horizontal.changed {
+  animation: votePulse 0.3s ease;
+}

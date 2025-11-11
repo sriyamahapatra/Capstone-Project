@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ==============================================================
+ 🌳 Forest Project - Maven Configuration (POM)
+==============================================================
+ This POM manages dependencies, build plugins, and metadata
+ for your Spring Boot + MongoDB + Security + AI Integration App.
+ ============================================================== -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<!-- ============================= -->
+	<!-- Basic Project Metadata -->
+	<!-- ============================= -->
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Spring Boot parent manages dependency versions and plugin defaults -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.3.0</version>
+		<relativePath/> <!-- lookup parent from Maven Central -->
+	</parent>
+
+	<!-- Project coordinates -->
+	<groupId>com.example</groupId>
+	<artifactId>forest</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Forest</name>
+	<description>Capstone Project - Spring Boot</description>
+
+	<!-- ============================= -->
+	<!-- Global Build Properties -->
+	<!-- ============================= -->
+	<properties>
+		<java.version>17</java.version> <!-- Java 17 LTS -->
+		<org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
+		<springdoc.version>2.5.0</springdoc.version>
+		<timeago.version>4.0.3</timeago.version>
+		<lombok.version>1.18.34</lombok.version>
+		<jetbrains.annotations.version>24.1.0</jetbrains.annotations.version>
+	</properties>
+
+	<!-- ============================= -->
+	<!-- Dependencies -->
+	<!-- ============================= -->
+	<dependencies>
+
+		<!-- 🌐 Web + REST Controllers -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<!-- 🔒 Security (Login, JWT Auth, Role-based access) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<!-- ✅ Validation (for DTO annotations like @NotNull, @Email) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+
+		<!-- 📧 Email service (used in MailService + Registration) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+
+		<!-- ⚡ Reactive WebClient (used in RAGServiceClient) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
+
+		<!-- 🧩 Template Engine (Thymeleaf for HTML emails) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+		<!-- 🔐 OAuth2 Resource Server (for JWT decoding and scopes) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+		</dependency>
+
+		<!-- 🔑 Security JOSE (for JWT creation, signing, and validation) -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-jose</artifactId>
+		</dependency>
+
+		<!-- 📘 OpenAPI/Swagger UI (API docs at /swagger-ui.html) -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>${springdoc.version}</version>
+		</dependency>
+
+		<!-- ⏳ Timeago (for "2 hours ago" style timestamps) -->
+		<dependency>
+			<groupId>com.github.marlonlom</groupId>
+			<artifactId>timeago</artifactId>
+			<version>${timeago.version}</version>
+		</dependency>
+
+		<!-- 💡 Lombok (reduces boilerplate with @Data, @Builder, etc.) -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- 🔄 MapStruct (DTO ↔ Entity mapper) -->
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${org.mapstruct.version}</version>
+		</dependency>
+
+		<!-- 🧠 Optional JetBrains annotations (for code hints like @NotNull) -->
+		<dependency>
+			<groupId>org.jetbrains</groupId>
+			<artifactId>annotations</artifactId>
+			<version>${jetbrains.annotations.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- 🍃 MongoDB (NoSQL document storage) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+		</dependency>
+
+		<!-- 🔁 DevTools (auto-restart for local development) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- 🧭 MapStruct Compiler Integration -->
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct-processor</artifactId>
+			<version>${org.mapstruct.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- ☁️ Google Vertex AI SDK (Gemini / content moderation) -->
+		<dependency>
+			<groupId>com.google.cloud</groupId>
+			<artifactId>google-cloud-vertexai</artifactId>
+			<version>1.4.0</version>
+		</dependency>
+
+		<!-- 🔐 Google Auth Library (for service accounts) -->
+		<dependency>
+			<groupId>com.google.auth</groupId>
+			<artifactId>google-auth-library-oauth2-http</artifactId>
+			<version>1.23.0</version>
+		</dependency>
+
+		<!-- 📦 Commons IO (file handling utilities) -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.15.1</version>
+		</dependency>
+
+		<!-- 🧪 Testing Frameworks -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- 📊 Actuator (for monitoring / health endpoints) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+	</dependencies>
+
+	<!-- ============================= -->
+	<!-- Build Configuration -->
+	<!-- ============================= -->
+	<build>
+		<plugins>
+
+			<!-- 🏗️ Maven Compiler Plugin
+			     Enables annotation processing for Lombok + MapStruct -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.11.0</version>
+				<configuration>
+					<release>${java.version}</release>
+					<annotationProcessorPaths>
+						<!-- Lombok processor -->
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>${lombok.version}</version>
+						</path>
+						<!-- Lombok + MapStruct binding helper -->
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok-mapstruct-binding</artifactId>
+							<version>0.2.0</version>
+						</path>
+						<!-- MapStruct annotation processor -->
+						<path>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>${org.mapstruct.version}</version>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
+
+			<!-- 🚀 Spring Boot Maven Plugin
+			     Used for packaging and running the application -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<!-- Exclude Lombok from the final JAR -->
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>

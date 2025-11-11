@@ -1,0 +1,43 @@
+<!-- src/app/components/chat/chat.component.html -->
+
+<div class="chat-widget-container">
+  <!-- The chat window - only shown when 'isOpen' is true -->
+  <div class="chat-window" *ngIf="isOpen">
+    <div class="chat-header">
+      <h3>Chat Bot</h3>
+      <button class="close-btn" (click)="toggleChat()">&times;</button>
+    </div>
+
+    <div class="message-window">
+      <!-- (This part is the same message loop as before) -->
+      <div *ngFor="let message of messages" class="message" [ngClass]="message.sender">
+        <div class="message-bubble">
+          <p [innerHTML]="message.text"></p>
+          <div *ngIf="message.sender === 'bot' && message.sourceDocuments?.length > 0" class="source-docs">
+            <strong>Sources:</strong>
+            <ul>
+              <li *ngFor="let doc of message.sourceDocuments">"{{ doc.content }}"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="isLoading" class="message bot">
+        <div class="message-bubble typing-indicator"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+
+    <div class="input-area">
+      <form (ngSubmit)="sendMessage()">
+        <input type="text" [(ngModel)]="currentQuestion" name="question" placeholder="Ask a question..." [disabled]="isLoading" autocomplete="off" />
+        <button type="submit" [disabled]="isLoading || !currentQuestion.trim()">Send</button>
+      </form>
+      <div *ngIf="error" class="error-message">{{ error }}</div>
+    </div>
+  </div>
+
+  <!-- The toggle button - always visible -->
+  <button class="chat-toggle-button" (click)="toggleChat()">
+    <!-- Simple chat icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+  </button>
+</div>

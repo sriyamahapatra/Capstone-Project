@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <hr/>
+    <div class="create-post-container col-md-9">
+      <form class="post-form" [formGroup]="editPostForm" (ngSubmit)="editPost()">
+        <div class="form-group">
+          <div class="create-post-heading">Edit Post</div>
+          <hr/>
+          <input type="text" [formControlName]="'postName'" class="form-control" style="margin-top: 5px"
+                 placeholder="Title">
+
+          <input type="text" class="form-control" [formControlName]="'url'" style="margin-top: 5px" placeholder="URL">
+          <select class="form-control" style="margin-top: 10px" [formControlName]="'subredditName'">
+            <option value="" selected disabled>Select Topic</option>
+            <option *ngFor="let subreddit of subreddits" [ngValue]="subreddit.name">{{ subreddit.name }}</option>
+          </select>
+
+          <editor apiKey="GET_YOUR_API_KEY_FROM_www.tiny.cloud"
+                  [formControlName]="'description'"
+                  [init]="editorConfig"></editor>
+          <span>
+              <div style="margin-top: 5px" class="float-right">
+               <button type="button" (click)="discardPost()" class="btn btn-discard">Discard</button>
+               <button type="submit" class="btn btn-post">Update</button>
+              </div>
+            </span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

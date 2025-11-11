@@ -1,0 +1,87 @@
+<header>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/">
+        <img src="/assets/logo.png" alt="Forest Logo" class="logo-img">
+        <span class="logo-text">Forest</span>
+      </a>
+
+      <div class="search-bar-container">
+        <form (ngSubmit)="searchPosts()">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search Forest" [(ngModel)]="searchTerm" name="searchTerm">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="submit">
+                <i class="fas fa-search">
+                  <img src="/assets/search-icon.png" alt="search" style="width: 18px; height: 18px;">
+                </i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="auth-buttons">
+        <a routerLink="/" class="home nav-link">Home</a>
+        <a routerLink="/trending" class="nav-link">Trending</a>
+        <div *ngIf="isLoggedIn" class="d-flex align-items-center">
+          <a routerLink="/my-feed" class="nav-link">My Feed</a>
+          
+          <!-- Create Dropdown -->
+          <div class="dropdown create-dropdown" 
+               (mouseenter)="openCreateDropdown()" 
+               (mouseleave)="closeCreateDropdown()">
+            <a class="nav-link create-btn" id="createDropdown" role="button">
+              <i class="fas fa-plus-circle create-icon"></i>
+              Create
+              <i class="fas fa-chevron-down dropdown-arrow" 
+                 [class.rotated]="showCreateDropdown"></i>
+            </a>
+            <div class="dropdown-menu create-dropdown-menu" 
+                 [class.show]="showCreateDropdown"
+                 (mouseenter)="clearCreateDropdownTimer()"
+                 (mouseleave)="closeCreateDropdown()">
+              <a class="dropdown-item" routerLink="/create-post" (click)="showCreateDropdown = false">
+                <i class="fas fa-edit dropdown-icon"></i>
+                Create Post
+              </a>
+              <a class="dropdown-item" routerLink="/create-subreddit" (click)="showCreateDropdown = false">
+                <i class="fas fa-folder dropdown-icon"></i>
+                Create Topic
+              </a>
+            </div>
+          </div>
+
+          <!-- User Dropdown -->
+          <div class="dropdown user-dropdown" 
+               (mouseenter)="openUserDropdown()" 
+               (mouseleave)="closeUserDropdown()">
+            <a class="nav-link dropdown-toggle user-menu" id="navbarDropdown" role="button">
+              {{ username }}
+              <i class="fas fa-chevron-down dropdown-arrow" 
+                 [class.rotated]="showUserDropdown"></i>
+            </a>
+            <div class="dropdown-menu user-dropdown-menu" 
+                 [class.show]="showUserDropdown"
+                 (mouseenter)="clearUserDropdownTimer()"
+                 (mouseleave)="closeUserDropdown()">
+              <a class="dropdown-item" routerLink="/user-profile/{{username}}" (click)="showUserDropdown = false">
+                <i class="fas fa-user dropdown-icon"></i>
+                Profile
+              </a>
+              <a class="dropdown-item" (click)="logout(); showUserDropdown = false">
+                <i class="fas fa-sign-out-alt dropdown-icon"></i>
+                Logout
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="!isLoggedIn" class="guest-buttons">
+          <a routerLink="/signup" class="btn btn-outline-primary mr-2">Sign Up</a>
+          <a routerLink="/login" class="btn btn-primary">Login</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

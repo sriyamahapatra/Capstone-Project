@@ -1,0 +1,95 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-9">
+      <!-- Title -->
+      <h4 class="search-title mb-4">
+        Search Results for:
+        <span class="query-text">“{{ query }}”</span>
+      </h4>
+
+      <!-- Loading Spinner -->
+      <div *ngIf="isLoading" class="loading-container text-center">
+        <div class="spinner-border text-success" role="status"></div>
+        <p class="loading-text mt-2">Searching...</p>
+      </div>
+
+      <!-- No Results -->
+      <div
+        *ngIf="!isLoading && hasSearched && posts.length === 0"
+        class="no-results-container text-center"
+      >
+        <h3>No Results Found</h3>
+        <p>
+          We couldn’t find any posts matching your search for
+          <strong>{{ query }}</strong>.
+        </p>
+      </div>
+
+      <!-- Search Results -->
+      <div *ngIf="!isLoading && posts.length > 0" class="results-list">
+        <div *ngFor="let post of posts" class="post-card mb-4">
+          <!-- Post Header -->
+          <div class="post-header d-flex justify-content-between align-items-center">
+            <span class="subreddit-name">{{ post.subredditName }}</span>
+            <span class="post-meta text-muted small">
+              Posted by <strong>{{ post.userName }}</strong> · {{ post.duration }}
+            </span>
+          </div>
+
+          <!-- Post Title and Body -->
+          <a class="post-link text-decoration-none" (click)="readPost(post.id)">
+            <h3 class="post-title mt-2 mb-2">{{ post.postName }}</h3>
+            <div class="post-body" [innerHTML]="post.description | safeHtml"></div>
+          </a>
+
+          <!-- Action Bar -->
+          <div class="post-actions d-flex align-items-center mt-3 flex-wrap">
+            <!-- Vote Section -->
+            <div class="vote-section me-3">
+              <app-vote-button [post]="post"></app-vote-button>
+            </div>
+
+            <!-- Comment Section -->
+            <div class="comment-section me-3">
+              <button class="comment-btn btn btn-outline-success" (click)="readPost(post.id)">
+                <i class="fas fa-comment"></i>
+                <span class="comment-count">{{ post.commentCount }}</span>
+                <span class="comment-text">Comments</span>
+              </button>
+            </div>
+
+            <!-- Edit & Delete (Visible to Author or Admin Only) -->
+            <div class="edit-delete-section me-3" *ngIf="isAuthor(post) || isAdmin()">
+              <button
+                class="btn btn-sm btn-primary"
+                (click)="editPost(post.id)"
+                title="Edit Post"
+              >
+                <i class="fas fa-edit me-1"></i>Edit
+              </button>
+              <button
+                class="btn btn-sm btn-danger"
+                (click)="deletePost(post.id)"
+                title="Delete Post"
+              >
+                <i class="fas fa-trash me-1"></i>Delete
+              </button>
+            </div>
+
+            <!-- Read Post -->
+            <div class="read-post-section ms-auto">
+              <button class="read-post-btn btn btn-outline-light" (click)="readPost(post.id)">
+                <i class="fas fa-external-link-alt me-1"></i>Read Post
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional Sidebar -->
+    <div class="col-md-3">
+      <!-- You can add a sidebar here later -->
+    </div>
+  </div>
+</div>

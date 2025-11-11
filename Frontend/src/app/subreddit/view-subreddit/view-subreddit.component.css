@@ -1,0 +1,242 @@
+.container.mt-4 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.post-container {
+  background-color: black;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.post-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Post Header Styles */
+.post-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.subreddit-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9em;
+  color: #555;
+  width: 100%;
+}
+
+.subreddit-text .posturl,
+.username {
+  font-weight: 500;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.subreddit-text .posturl:hover,
+.username:hover {
+  text-decoration: underline;
+}
+
+/* Post Content Styles */
+.post-title a.postname {
+  font-size: 1.25em;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.post-title a.postname:hover {
+  color: #007bff;
+}
+
+.post-text {
+  color: #ffffff;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+.post-text p {
+  margin-bottom: 0;
+}
+
+/* Post Footer Styles */
+.post-footer {
+  margin-top: 10px;
+}
+
+.post-footer .d-flex.align-items-center {
+  gap: 15px;
+}
+
+/* Vote Button Styles - Adjusted for new position */
+app-vote-button {
+  display: inline-block;
+}
+
+/* --- Buttons and Icons --- */
+.toggleNotifications.btn-outline-warning {
+  margin-left: auto;
+  border-color: #ffc107;
+  color: #ffc107;
+}
+
+.toggleNotifications.btn-outline-warning:hover {
+  background-color: #ffc107;
+  color: #fff;
+}
+
+.btnCommments {
+  background-color: #f8f9fa00;
+  border: 1px solid #204b1700;
+  color: #ffffff;
+  border-radius: 4px;
+  padding: 6px 12px;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btnCommments:hover {
+  background-color: #e9ecef;
+  color: #000;
+}
+
+/* ✅ Edit & Delete Section */
+.edit-delete-section {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Adds clean space between Edit & Delete buttons */
+}
+
+/* Blue Edit Button */
+.btn-primary {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  border: none;
+  color: #fff;
+  font-size: 0.9em;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #0056b3 0%, #007bff 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
+}
+
+/* Red Delete Button */
+.btn-danger {
+  background-color: #b71c1c;
+  border: none;
+  color: #fff;
+  font-size: 0.9em;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #d32f2f;
+  transform: translateY(-1px);
+  box-shadow: 0 0 8px rgba(255, 68, 68, 0.4);
+}
+
+/* "Read Post" button styling */
+.read-post {
+  background: linear-gradient(135deg, #122c19 0%, #226b2d 100%);
+  color: #fff9f9;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 0.9em;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.read-post:hover {
+  background: linear-gradient(135deg, #226b2d 0%, #122c19 100%);
+}
+
+/* --- Horizontal Rules --- */
+hr {
+  border-top: 1px solid #e0e0e0;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 991.98px) {
+  .col-md-9 {
+    margin-bottom: 30px;
+  }
+
+  .toggleNotifications.btn-outline-warning {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .post-container {
+    padding: 15px;
+  }
+
+  .post-title a.postname {
+    font-size: 1.1em;
+  }
+
+  .subreddit-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .post-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .post-footer .d-flex.align-items-center {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .btnCommments,
+  .login.btn {
+    margin-top: 0;
+  }
+
+  .login.btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .post-footer .d-flex.align-items-center {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .btnCommments {
+    width: 100%;
+    text-align: center;
+  }
+}

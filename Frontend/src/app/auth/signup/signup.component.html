@@ -1,0 +1,82 @@
+<div class="register-section">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-1"></div>
+
+    <div class="col-md-5">
+      <div class="quote-section">
+        <h2 class="quote-text">Join the community</h2>
+        <p class="quote-subtext">Create your account and start exploring.</p>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-header">
+          <h4>Register</h4>
+        </div>
+        <div class="card-body">
+          <form class="form" [formGroup]="signupForm" (ngSubmit)="signup()">
+            <!-- Email Field -->
+            <div class="form-group">
+              <label for="email_address" class="form-label">E-Mail Address</label>
+              <input type="email" [formControlName]="'email'" id="email_address" class="form-control"
+                     name="email-address" required autofocus placeholder="Enter your email address">
+              <div class="validation-message"
+                   *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched">
+                Please provide a valid email
+              </div>
+            </div>
+
+            <!-- Username Field -->
+            <div class="form-group">
+              <label class="form-label">User Name</label>
+              <input type="text" [formControlName]="'username'" class="form-control"
+                     required autofocus placeholder="Choose a username">
+              <div class="validation-message"
+                   *ngIf="!signupForm.get('username').valid && signupForm.get('username').touched">
+                Please provide a valid username
+              </div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" [formControlName]="'password'" id="password" class="form-control"
+                     name="password" required placeholder="Create a password">
+              <div class="validation-message"
+                   *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched">
+                Please provide a valid Password
+              </div>
+            </div>
+
+            <!-- Interests Section -->
+            <div class="form-group">
+              <label class="form-label">Interests</label>
+              <p class="text-muted">Select at least 3 interests.</p>
+              <div class="interests-grid">
+                <div *ngFor="let interest of interests" class="interest-item"
+                     [class.selected]="selectedInterests.has(interest)" (click)="toggleInterest(interest)">
+                  {{ interest }}
+                </div>
+              </div>
+              <div class="validation-message" *ngIf="signupForm.get('interests').hasError('minlength') && signupForm.get('interests').touched">
+                Please select at least 3 interests.
+              </div>
+            </div>
+
+            <!-- Sign Up Button & Login Link -->
+            <div class="form-actions">
+              <button type="submit" class="login-btn">
+                Sign Up
+              </button>
+              <div class="login-link">
+                Existing user? <a routerLink="/login">Log In</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>

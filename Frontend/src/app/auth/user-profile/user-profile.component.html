@@ -1,0 +1,59 @@
+<div class="profile-container">
+  <!-- Header Section -->
+  <div class="profile-header">
+    <div class="welcome-section">
+      <h2>Welcome, <span class="username-highlight">{{name}}</span></h2>
+      <div class="stats-container">
+        <div class="stat-item">
+          <div class="stat-number">{{postLength}}</div>
+          <div class="stat-label">Posts</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">{{commentLength}}</div>
+          <div class="stat-label">Comments</div>
+        </div>
+      </div>
+    </div>
+    <p class="welcome-message">Check your post and comment history below</p>
+  </div>
+
+  <!-- Posts Section -->
+  <div class="section">
+    <div class="section-header">
+      <h3>Your Posts</h3>
+      <div class="section-line"></div>
+    </div>
+    <app-post-tile [posts]="posts"></app-post-tile>
+  </div>
+
+  <!-- Comments Section -->
+  <!-- <div class="section">
+    <div class="section-header">
+      <h3>Your Comments</h3>
+      <div class="section-line"></div>
+    </div>
+    <div class="comments-list">
+      <div *ngFor="let comment of comments" class="comment-card">
+        <div class="comment-header">
+          <a routerLink="/user/comment.username" class="comment-author">
+            {{comment.userName}}
+          </a>
+          <span class="comment-duration">{{comment.duration}}</span>
+        </div>
+        <div class="comment-content">
+          {{comment.text}}
+        </div>
+        <div class="comment-actions">
+          <button class="action-btn">
+            <span class="btn-icon">💚</span>
+            Like
+          </button>
+          <button class="action-btn">
+            <span class="btn-icon">💬</span>
+            Reply
+          </button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</div>
