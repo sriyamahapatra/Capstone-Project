@@ -1,6 +1,3 @@
-Got it 👍 — here’s a **short, clean, professional README** version that fits a student group project perfectly:
-
----
 
 ````markdown
 # 🌲 Capstone Project – Forest Forum  
