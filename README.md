@@ -32,10 +32,4 @@ cd Capstone-Project
 
 Run backend (Spring Boot) and frontend (Angular) separately, or use Docker for containerized setup.
 
-## 📚 Learning Outcomes
-
-* Built and deployed a complete full-stack application
-* Implemented authentication, REST APIs, and cloud deployment
-* Practiced collaborative development using Git and GitHub
-
-```
+````
